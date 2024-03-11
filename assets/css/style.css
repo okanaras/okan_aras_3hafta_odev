@@ -1,0 +1,26 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #f5f8f9;
+
+}
+
+.li-bg-ccc li {
+    background-color: #ccc;
+    margin-bottom: 2px;
+}

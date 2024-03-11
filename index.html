@@ -5,9 +5,166 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- bs icons cdn -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+        integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- bs5 css cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
+    <!-- header -->
+    <header>
+        <div class="container-fluid mt-3">
+            <nav class="navbar navbar-expand-lg bg-black">
+                <div class="container-fluid">
+                    <span class="navbar-brand text-white fw-bold">To Do List</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main class="mt-5">
+        <div class="container">
+            <!-- create task sec -->
+            <section class="create-task-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Create Task</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <input type="text" class="form-control" placeholder="New Task Name">
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-success w-100">Add Task List <i
+                                        class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- create task sec -->
+            <section class="task-list-section mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <h3>Task Lists</h3>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-success w-100">Tamamlandi</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-danger w-100">Listeden Cikar</button>
+                            </div>
+                            <div class="col-3">
+                                <button class="btn btn-primary w-100">Tumunu Sec</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush li-bg-ccc" id="task-list">
+                            <li class="list-group-item">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                                        <label class="form-check-label" for="checkbox1">
+                                            CheckBox 1
+                                        </label>
+                                    </div>
+                                    <span>
+                                        <i class="bi bi-trash-fill text-primary fs-4"></i>
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                                        <label class="form-check-label" for="checkbox1">
+                                            CheckBox 1
+                                        </label>
+                                    </div>
+                                    <span>
+                                        <i class="bi bi-trash-fill text-primary fs-4"></i>
+                                    </span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                                        <label class="form-check-label" for="checkbox1">
+                                            CheckBox 1
+                                        </label>
+                                    </div>
+                                    <span>
+                                        <i class="bi bi-trash-fill text-primary fs-4"></i>
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- create task sec -->
+            <section class="completed-tasks-section mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h3>Completed Tasks</h3>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-warning w-100">Clear List</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush li-bg-ccc" id="completed-tasks">
+                            <li class="list-group-item">
+                                <span>CheckBoxes</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>CheckBoxes</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>CheckBoxes</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="container-fluid">
+        <div class="fixed-bottom bg-dark">
+            <p class="p-1 text-white text-center">&copy; 2024 Yazilim Egitim</p>
+        </div>
+    </footer>
+
+    <!-- bs5 js cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="assets/js/main.jsmain.js"></script>
 
 </body>
 
