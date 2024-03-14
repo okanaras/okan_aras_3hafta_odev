@@ -36,7 +36,7 @@
     <!-- main -->
     <main class="mt-5">
         <div class="container">
-            <!-- create task sec -->
+            <!-- create task section -->
             <section class="create-task-section">
                 <div class="card">
                     <div class="card-header">
@@ -45,10 +45,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-9">
-                                <input type="text" class="form-control" placeholder="New Task Name">
+                                <input type="text" class="form-control" placeholder="New Task Name" id="inputNewTask">
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-success w-100">Add Task List <i
+                                <button class="btn btn-success w-100" id="btnAddTask">Add Task List <i
                                         class="bi bi-plus-lg"></i></button>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                 </div>
             </section>
 
-            <!-- create task sec -->
+            <!-- task-list section -->
             <section class="task-list-section mt-5">
                 <div class="card">
                     <div class="card-header">
@@ -65,13 +65,14 @@
                                 <h3>Task Lists</h3>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-success w-100">Tamamlandi</button>
+                                <button class="btn btn-success w-100" id="btnDone">Tamamlandi</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-danger w-100">Listeden Cikar</button>
+                                <button class="btn btn-danger w-100" id="btnRemove">Listeden Cikar</button>
                             </div>
                             <div class="col-3">
-                                <button class="btn btn-primary w-100">Tumunu Sec</button>
+                                <input type="checkbox" class="d-none checkbox-element" id="btnSelectAll">
+                                <label class="btn btn-primary w-100" for="btnSelectAll">Tumunu Sec</label>
                             </div>
                         </div>
                     </div>
@@ -86,7 +87,7 @@
                                         </label>
                                     </div>
                                     <span>
-                                        <i class="bi bi-trash-fill text-primary fs-4"></i>
+                                        <i class="bi bi-trash-fill text-primary fs-4" id="btnTrashTask"></i>
                                     </span>
                                 </div>
                             </li>
@@ -121,7 +122,7 @@
                 </div>
             </section>
 
-            <!-- create task sec -->
+            <!-- completed-tasks section -->
             <section class="completed-tasks-section mt-5">
                 <div class="card">
                     <div class="card-header">
@@ -130,7 +131,7 @@
                                 <h3>Completed Tasks</h3>
                             </div>
                             <div class="col-6">
-                                <button class="btn btn-warning w-100">Clear List</button>
+                                <button class="btn btn-warning w-100" id="btnClearList">Clear List</button>
                             </div>
                         </div>
                     </div>
@@ -153,18 +154,23 @@
     </main>
 
     <!-- footer -->
-    <footer class="container-fluid">
+    <!-- <footer class="container-fluid">
         <div class="fixed-bottom bg-dark">
             <p class="p-1 text-white text-center">&copy; 2024 Yazilim Egitim</p>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- bs5 js cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
         integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script src="assets/js/main.jsmain.js"></script>
+    <!-- jquery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="assets/js/main.js"></script>
 
 </body>
 

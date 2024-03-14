@@ -24,3 +24,11 @@ body {
     background-color: #ccc;
     margin-bottom: 2px;
 }
+
+#btnTrashTask {
+    cursor: pointer;
+}
+
+.text-red {
+    color: red;
+}
