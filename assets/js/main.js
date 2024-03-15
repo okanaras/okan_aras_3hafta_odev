@@ -10,13 +10,11 @@ $(document).ready((e) => {
   let btnClearList = $("#btnClearList");
 
   let taskLists = JSON.parse(localStorage.getItem("taskLists"));
+  let completedList = JSON.parse(localStorage.getItem("completedList"));
 
   if (taskLists == null) {
     taskLists = [];
   }
-
-  let completedList = JSON.parse(localStorage.getItem("completedList"));
-
   if (completedList == null) {
     completedList = [];
   }
@@ -25,7 +23,7 @@ $(document).ready((e) => {
   listele(completedList, completedListElement);
 
   // click add task button
-  $(btnAddTask).click((e) => {
+  btnAddTask.click((e) => {
     let newTaskInput = $("#inputNewTask");
     let newTask = newTaskInput.val().trim();
     let isNewTaskNull = newTaskInput.val() === "";
@@ -35,7 +33,7 @@ $(document).ready((e) => {
     if (isAdded) {
       alert("bu task daha once eklenmistir");
     } else if (isNewTaskNull) {
-      alert("bos veri eklenemez");
+      alert("bos task eklenemez");
     } else {
       taskLists.unshift(newTask);
       localStorage.setItem("taskLists", JSON.stringify(taskLists));
@@ -45,46 +43,45 @@ $(document).ready((e) => {
   });
 
   // click tamamlandi button
-  $(btnDone).click((e) => {
+  btnDone.click((e) => {
     let checkboxes = $(".checkbox-element:checked");
 
     checkboxes.each((index, value) => {
-      let label = $(value).parent().find("label");
-      let labelElement = $(value).parent().find("label").text();
-
-      let isWantedLabel = label.attr("wanted-label");
-
-      let isTaskAdded = completedList.includes(labelElement);
+      let addedName = $(value).attr("data-name");
+      let isTaskAdded = completedList.includes(addedName);
+      let isWantedTask = $(value).attr("wanted-task");
 
       if (isTaskAdded) {
-        alert("Bu task daha once tamamlanma listesine eklenmis");
-      } else if (isWantedLabel) {
-        taskLists.splice(labelElement, 1);
-        localStorage.setItem("taskLists", JSON.stringify(taskLists));
-        listele(taskLists, taskListElement, true);
-
-        completedList.unshift(labelElement);
+        alert(
+          `'${addedName}' taski zaten daha once tamamlanma listesine eklenmis`
+        );
+      } else if (isWantedTask) {
+        completedList.unshift(addedName);
         localStorage.setItem("completedList", JSON.stringify(completedList));
         listele(completedList, completedListElement);
       }
+
+      taskLists = taskLists.filter((task) => task !== addedName);
+      localStorage.setItem("taskLists", JSON.stringify(taskLists));
+      listele(taskLists, taskListElement, true);
     });
   });
 
   // click remove button
-  $(btnRemove).click((e) => {
-    let checkboxes = $("[type ='checkbox']:checked");
+  btnRemove.click((e) => {
+    let checkboxes = $(".checkbox-element:checked");
 
     checkboxes.each((index, value) => {
-      let labelElement = $(value).parent().find("label").text();
+      let silinecekName = $(value).attr("data-name");
 
-      taskLists.splice(labelElement, 1);
+      taskLists = taskLists.filter((task) => task !== silinecekName);
       localStorage.setItem("taskLists", JSON.stringify(taskLists));
       listele(taskLists, taskListElement, true);
     });
   });
 
   // checked all checkbox
-  btnSelectAll.click(function () {
+  btnSelectAll.click((e) => {
     let checkboxes = $(".checkbox-element");
     checkboxes.prop("checked", checkboxes.prop("checked"));
   });
@@ -94,7 +91,8 @@ $(document).ready((e) => {
     let element = e.target;
 
     if (element.id.includes("btnTrashTask")) {
-      let silinecekID = element.id;
+      let silinecekID = $(element).attr("data-id");
+
       taskLists.splice(silinecekID, 1);
       localStorage.setItem("taskLists", JSON.stringify(taskLists));
       listele(taskLists, taskListElement, true);
@@ -102,7 +100,7 @@ $(document).ready((e) => {
   });
 
   // clear completed task
-  $(btnClearList).click((e) => {
+  btnClearList.click((e) => {
     completedList = [];
     localStorage.setItem("completedList", JSON.stringify(completedList));
     listele(completedList, completedListElement);
@@ -113,7 +111,9 @@ $(document).ready((e) => {
     listElement.html("");
 
     if (list.length < 1) {
-      listElement.html("<span class='bg-warning p-2'>Listede task yok</span>");
+      listElement.html(
+        "<span class='bg-warning p-2 rounded-1'>Listede task yok</span>"
+      );
     }
 
     $.each(list, (index, value) => {
@@ -123,10 +123,10 @@ $(document).ready((e) => {
       );
       let formCheckDivElement = $('<div class="form-check"></div>');
       let inputCheckElement = $(
-        `<input type="checkbox" class="form-check-input checkbox-element" id="task-${index}" data-id="${index}">${value}`
+        `<input type="checkbox" class="form-check-input checkbox-element" id="task-${index}" data-name="${value}" wanted-task="true">${value}`
       );
       let labelElement = $(
-        `<label class="form-check-label" for="task-${index}" id="task-${index}" wanted-label="true">${value}</label>`
+        `<label class="form-check-label" for="task-${index}">${value}</label>`
       );
       let spanElement = $("<span></span>");
       let iElement = $(
